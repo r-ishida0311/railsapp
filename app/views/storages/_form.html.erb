@@ -1,4 +1,4 @@
-<%= form_with(model: @storage, url: storages_path, data: { turbo_frame: "storage_edit_modal" }) do |form| %>
+<%= form_with(model: @storage, url: params[:id] ? storage_path(@storage) : storages_path, data: { turbo_frame: "storage_edit_modal" }) do |form| %>
   <div class="field">
     <%= form.label :storage %>
     <%= form.text_field :storage %>

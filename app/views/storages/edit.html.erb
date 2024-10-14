@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "storage_edit_modal" do %>
   <div class="fixed inset-0 z-50 flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5)">
     <div class="bg-white p-4 rounded-lg shadow-lg relative">
-      </button>
       <%= render "storages/form" %>
+      <%= link_to 'Delete', @storage, method: :delete, data: { confirm: 'Are you sure?', turbo_frame: "_top" }, class: 'btn btn-danger' %> <%# 削除ボタン %>
     </div>
   </div>
 <% end %>
