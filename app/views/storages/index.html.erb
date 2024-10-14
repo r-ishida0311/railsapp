@@ -5,13 +5,16 @@
     <tr>
       <th>Storage</th>
       <th>Shelves</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @storages.each do |storage| %>
       <tr>
-        <td><%= storage.storage %></td>
+        <td>
+          <%= storage.storage %>
+          <%= link_to 'Edit', edit_storage_path(storage), class: 'btn btn-warning', data: { turbo_frame: "storage_edit_modal" } %>
+        </td>
         <td>
           <ul>
             <% storage.shelves.each do |shelf| %>
@@ -21,7 +24,6 @@
         </td>
         <td>
           <%= link_to 'Show', storage, class: 'btn btn-primary' %>
-          <%= link_to 'Edit', edit_storage_path(storage), class: 'btn btn-warning' %>
           <%= link_to 'Destroy', storage, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </td>
       </tr>
@@ -35,4 +37,6 @@
   <%# モーダルの中身はここに表示される %>
 </turbo-frame>
 
-
+<turbo-frame id="storage_edit_modal">
+  <%# モーダルの中身はここに表示される %>
+</turbo-frame>
