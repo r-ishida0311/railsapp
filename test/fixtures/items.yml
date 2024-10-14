@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: MyString
+  category: one
+  equipment: one
+  storage: one
+  shelf: one
+  affiliation: one
+  rental_fee: 1
+  pre_rental_fee: 1
+  serial: MyString
+  status: 1
+  memo: MyText
+
+two:
+  item: MyString
+  category: two
+  equipment: two
+  storage: two
+  shelf: two
+  affiliation: two
+  rental_fee: 1
+  pre_rental_fee: 1
+  serial: MyString
+  status: 1
+  memo: MyText
