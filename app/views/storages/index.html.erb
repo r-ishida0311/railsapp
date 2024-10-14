@@ -1,5 +1,11 @@
 <h1>Storages</h1>
+<turbo-frame id="storage_new_modal">
+  <%# モーダルの中身はここに表示される %>
+</turbo-frame>
 
+<turbo-frame id="storage_edit_modal">
+  <%# モーダルの中身はここに表示される %>
+</turbo-frame>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -30,10 +36,4 @@
 
 <%= link_to 'New Storage', new_storage_path, class: 'btn btn-success', data: { turbo_frame: "storage_new_modal" } %>
 
-<turbo-frame id="storage_new_modal">
-  <%# モーダルの中身はここに表示される %>
-</turbo-frame>
 
-<turbo-frame id="storage_edit_modal">
-  <%# モーダルの中身はここに表示される %>
-</turbo-frame>
