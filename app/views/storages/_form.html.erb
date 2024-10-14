@@ -1,0 +1,9 @@
+<%= form_with(model: @storage, url: storages_path, data: { turbo_frame: "new_storage_form" }) do |form| %>
+  <div class="field">
+    <%= form.label :storage %>
+    <%= form.text_field :storage %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

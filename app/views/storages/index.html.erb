@@ -1,0 +1,38 @@
+<h1>Storages</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Storage</th>
+      <th>Shelves</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @storages.each do |storage| %>
+      <tr>
+        <td><%= storage.storage %></td>
+        <td>
+          <ul>
+            <% storage.shelves.each do |shelf| %>
+              <li><%= shelf.shelf %></li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <%= link_to 'Show', storage, class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_storage_path(storage), class: 'btn btn-warning' %>
+          <%= link_to 'Destroy', storage, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Storage', new_storage_path, class: 'btn btn-success', data: { turbo_frame: "modal" } %>
+
+<turbo-frame id="modal">
+  <%# モーダルの中身はここに表示される %>
+</turbo-frame>
+
+
