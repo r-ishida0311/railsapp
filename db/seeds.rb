@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Storage.destroy_all
+
+Storage.create(storage: 'Storage 1')
+Storage.create(storage: 'Storage 2')

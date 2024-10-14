@@ -14,6 +14,10 @@ def create
   end
 end
 
+def show
+  @storage = Storage.find(params[:id])
+end
+
 def edit
   @storage = Storage.find(params[:id])
 end
