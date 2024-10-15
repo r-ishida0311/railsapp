@@ -1,10 +1,8 @@
 class StoragesController < ApplicationController
   def index
-
-
-   @search = Storage.ransack(params[:q])
-   @search.sorts = 'id' if @search.sorts.empty?
-   @storages = @search.result.page(params[:page])
+    @search = Storage.ransack(params[:q])
+    @search.sorts = 'id' if @search.sorts.empty?
+    @storages = @search.result.page(params[:page])
     @storage = Storage.new
     @shelf = Shelf.new
   end

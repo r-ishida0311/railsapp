@@ -8,7 +8,7 @@ class ShelvesController < ApplicationController
     @storage = Storage.find(params[:storage_id])
     @shelf = @storage.shelves.build(shelf_params)
     if @shelf.save
-      redirect_to storage_path(@storage)
+      redirect_to storages_path
     else
       render :new
     end
