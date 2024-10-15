@@ -46,41 +46,38 @@
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    <% @storages.each do |storage| %>
-      <tr>
+<tbody>
+  <% @storages.each do |storage| %>
+  <%= turbo_frame_tag storage do %>
+    <tr id="<%= dom_id(storage) %>">
       
         <td>
-        <%= turbo_frame_tag storage do %>
-           <%= storage.storage %>
-           <%= link_to "Edit", edit_storage_path(storage), class: 'btn btn-warning' %>
-        <% end %>
+          <%= storage.storage %>
+          <%= link_to "Edit", edit_storage_path(storage), class: 'btn btn-warning' %>
         </td>
-
         <td>
           <ul>
             <% storage.shelves.each do |shelf| %>
-              <li>
-              <%= turbo_frame_tag shelf do %>
-                <%= shelf.shelf %>
-                <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning' %>
-              <% end %>
+            <%= turbo_frame_tag shelf do %>
+              <li id="<%= dom_id(shelf) %>">
+                
+                  <%= shelf.shelf %>
+                  <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning' %>
+                <% end %>
               </li>
             <% end %>
           </ul>
-          
           <%= render "shelves/form", shelf: Shelf.new(storage: storage), storage: storage %>
-
         </td>
-
-         
-
-      </tr>
+      
+    </tr>
     <% end %>
-    <% end %>
-    
-  </tbody>
+  <% end %>
+</tbody>
+
+
 </table>
+<% end %>
 <% end %>
 <%= paginate @storages %>
 
