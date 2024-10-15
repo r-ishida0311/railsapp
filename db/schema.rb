@@ -94,5 +94,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_123324) do
   add_foreign_key "items", "storages"
   add_foreign_key "reservations", "items"
   add_foreign_key "reservations", "users"
-  add_foreign_key "shelves", "storages"
+  add_foreign_key "shelves", "storages", on_delete: :cascade
 end
