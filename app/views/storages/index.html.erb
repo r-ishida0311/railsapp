@@ -12,6 +12,25 @@
   </div>
 <% end %>
 
+ <%= search_form_for @search do |f| %>
+ 
+   <%# `カラム名_cont`とすることで、カラムに対してLIKEを使った曖昧一致検索ができる %>
+   <%= f.label :storage_cont, "名前" %>
+   <%= f.search_field :storage_cont %>
+ 
+   <%# `カラム名_eq`とすることで、カラムに対して完全一致検索ができる %>
+   <%
+=begin%>
+ <%= f.label :age_eq, "年齢" %>
+   <%= f.search_field :age_eq %> 
+<%
+=end%>
+   <%= f.submit %>
+ 
+   <%# 検索結果と検索フォームをクリアする %>
+   <%= link_to "クリア", storages_path %>
+ <% end %>
+
  <%= sort_link(@search, :storage) %>
  <%= sort_link(@search, :id) %>
  <%# ソートのリンク。このリンクをクリックするとage属性でソートされる %>
