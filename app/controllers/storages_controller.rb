@@ -3,11 +3,7 @@ class StoragesController < ApplicationController
 
 
    @search = Storage.ransack(params[:q])
-
-
    @search.sorts = 'id desc' if @search.sorts.empty?
-
-
    @storages = @search.result.page(params[:page])
     @storage = Storage.new
   end
@@ -17,7 +13,9 @@ class StoragesController < ApplicationController
     if @storage.save
       redirect_to storages_path, notice: 'Storage was successfully created.'
     else
-      @storages = Storage.page(params[:page])
+      @search = Storage.ransack(params[:q])
+      @search.sorts = 'id desc' if @search.sorts.empty?
+      @storages = @search.result.page(params[:page])
       render :index, status: :unprocessable_entity
     end
   end
