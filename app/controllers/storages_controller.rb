@@ -22,6 +22,15 @@ class StoragesController < ApplicationController
     @storage = Storage.find(params[:id])
   end
 
+  def update
+    @storage = Storage.find(params[:id])
+    if @storage.update(storage_params)
+      redirect_to storages_path, notice: 'Storage was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @storage = Storage.find(params[:id])
     @storage.destroy
