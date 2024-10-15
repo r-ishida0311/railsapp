@@ -12,6 +12,11 @@
   </div>
 <% end %>
 
+ <%= sort_link(@search, :storage) %>
+ <%= sort_link(@search, :id) %>
+ <%# ソートのリンク。このリンクをクリックするとage属性でソートされる %>
+
+
 <table class="table table-striped">
   <thead>
     <tr>
