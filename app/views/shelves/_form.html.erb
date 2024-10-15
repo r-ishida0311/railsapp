@@ -1,0 +1,10 @@
+<%= form_with(model: shelf, url: storage_shelves_path(storage)) do |form| %>
+  <div class="field">
+    <%= form.label :shelf %>
+    <%= form.text_field :shelf %>
+  </div>
+  <%= form.hidden_field :storage_id, value: storage.id %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

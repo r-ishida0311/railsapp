@@ -42,6 +42,7 @@
     <tr>
       <th>Storage</th>
       <th>Shelves</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -61,6 +62,9 @@
               <li><%= shelf.shelf %></li>
             <% end %>
           </ul>
+          
+          <%= render "shelves/form", shelf: Shelf.new(storage: storage), storage: storage %>
+
         </td>
 
          
@@ -72,4 +76,7 @@
 </table>
 <% end %>
 <%= paginate @storages %>
+
 <%= render "storages/form" %>
+
+

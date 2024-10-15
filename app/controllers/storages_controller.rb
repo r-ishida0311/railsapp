@@ -6,6 +6,7 @@ class StoragesController < ApplicationController
    @search.sorts = 'id' if @search.sorts.empty?
    @storages = @search.result.page(params[:page])
     @storage = Storage.new
+    @shelf = Shelf.new
   end
 
   def create
