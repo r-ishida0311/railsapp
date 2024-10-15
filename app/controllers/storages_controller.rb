@@ -3,7 +3,7 @@ class StoragesController < ApplicationController
 
 
    @search = Storage.ransack(params[:q])
-   @search.sorts = 'id desc' if @search.sorts.empty?
+   @search.sorts = 'id' if @search.sorts.empty?
    @storages = @search.result.page(params[:page])
     @storage = Storage.new
   end
