@@ -11,7 +11,7 @@ class StoragesController < ApplicationController
   def create
     @storage = Storage.new(storage_params)
     if @storage.save
-      redirect_to storages_path, notice: 'Storage was successfully created.'
+      redirect_to storages_path
     else
       @search = Storage.ransack(params[:q])
       @search.sorts = 'id desc' if @search.sorts.empty?
@@ -37,7 +37,7 @@ class StoragesController < ApplicationController
   def update
     @storage = Storage.find(params[:id])
     if @storage.update(storage_params)
-      redirect_to storages_path, notice: 'Storage was successfully updated.'
+      redirect_to storages_path
     else
       render :edit, status: :unprocessable_entity
     end
