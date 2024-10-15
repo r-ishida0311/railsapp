@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
- <%= search_form_for @search do |f| %>
+ <%= search_form_for @search, html: { data: { turbo_frame: "storages-list" } } do |f| %>
  
    <%# `カラム名_cont`とすることで、カラムに対してLIKEを使った曖昧一致検索ができる %>
    <%= f.label :storage_cont, "名前" %>
@@ -36,7 +36,7 @@
 
  <%# ソートのリンク。このリンクをクリックするとage属性でソートされる %>
 
-
+<%= turbo_frame_tag "storages-list" do %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -47,12 +47,14 @@
   <tbody>
     <% @storages.each do |storage| %>
       <tr>
-      <%= turbo_frame_tag "storage" do %>
+      
         <td>
+        <%= turbo_frame_tag storage do %>
            <%= storage.storage %>
            <%= link_to "Edit", edit_storage_path(storage), class: 'btn btn-warning' %>
-        </td>
         <% end %>
+        </td>
+
         <td>
           <ul>
             <% storage.shelves.each do |shelf| %>
@@ -68,5 +70,6 @@
     
   </tbody>
 </table>
+<% end %>
 <%= paginate @storages %>
 <%= render "storages/form" %>
