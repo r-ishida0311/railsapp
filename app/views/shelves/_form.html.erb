@@ -1,4 +1,4 @@
-<%= form_with(model: shelf, url: storage_shelves_path(storage)) do |form| %>
+<%= form_with(model: shelf, url: shelf.new_record? ? storage_shelves_path(storage) : storage_shelf_path(storage, shelf), method: shelf.new_record? ? :post : :patch) do |form| %>
   <div class="field">
     <%= form.label :shelf %>
     <%= form.text_field :shelf %>

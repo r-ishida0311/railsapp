@@ -17,6 +17,31 @@ class ShelvesController < ApplicationController
   def edit
     @storage = Storage.find(params[:storage_id])
     @shelf = @storage.shelves.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("shelf#{@shelf.id}", partial: "shelves/form", locals: { shelf: @shelf })
+      end
+    end
+  end
+
+  def update
+    @storage = Storage.find(params[:storage_id])
+    @shelf = @storage.shelves.find(params[:id])
+    if @shelf.update(shelf_params)
+      redirect_to storages_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @shelf = Shelf.find(params[:id])
+    @shelf.destroy
+    respond_to do |format|
+      format.html { redirect_to storages_path }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("shelf#{@shelf.id}") }
+    end
   end
 
   private
