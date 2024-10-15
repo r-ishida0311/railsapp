@@ -1,5 +1,5 @@
-<h1>Storage Details</h1>
-
-<p><strong>Storage:</strong> <%= @storage.storage %></p>
-
-<%# Add other attributes to display as needed %>
+<%= turbo_frame_tag @storage do %>
+  <!-- ここに詳細ページの内容を記述 -->
+  <h1><%= @storage.storage %></h1>
+  <!-- 他の詳細情報 -->
+<% end %>

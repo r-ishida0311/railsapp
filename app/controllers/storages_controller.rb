@@ -26,8 +26,14 @@ class StoragesController < ApplicationController
 
   def edit
     @storage = Storage.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("storage_#{@storage.id}", partial: "storages/form", locals: { storage: @storage })
+      end
+    end
   end
-
+  
   def update
     @storage = Storage.find(params[:id])
     if @storage.update(storage_params)
