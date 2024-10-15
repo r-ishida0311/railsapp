@@ -17,15 +17,13 @@
     <tr>
       <th>Storage</th>
       <th>Shelves</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @storages.each do |storage| %>
       <tr>
         <td>
-          <%= storage.storage %>
-          <%= link_to 'Edit', edit_storage_path(storage), class: 'btn btn-warning', data: { turbo_frame: "storage_edit_modal" } %>
+           <%= link_to storage.storage, edit_storage_path(storage), class: 'btn btn-warning', data: { turbo_frame: "storage_edit_modal" } %>
         </td>
         <td>
           <ul>
@@ -34,9 +32,16 @@
             <% end %>
           </ul>
         </td>
+
+         
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= render "storages/form" %>
+
+<turbo-frame id="storage_edit_modal">
+  <%# モーダルの中身はここに表示される %>
+</turbo-frame>

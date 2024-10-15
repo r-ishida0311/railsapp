@@ -14,9 +14,18 @@ class StoragesController < ApplicationController
     end
   end
 
-  # ... other actions ...
+
+  def show
+    @storage = Storage.find(params[:id])
+  end
+  
+  def edit
+    @storage = Storage.find(params[:id])
+  end
+
 
   private
+
 
   def storage_params
     params.require(:storage).permit(:storage)

@@ -1,8 +1,9 @@
-<%= form_with(model: @storage, url: params[:id] ? storage_path(@storage) : storages_path) do |form| %>
+<%= form_with(model: @storage, url: @storage.new_record? ? storages_path : storage_path(@storage), method: @storage.new_record? ? :post : :patch) do |form| %>
   <div class="field">
     <%= form.label :storage %>
     <%= form.text_field :storage %>
   </div>
+  <%= form.hidden_field :id %>
   <div class="actions">
     <%= form.submit %>
   </div>
