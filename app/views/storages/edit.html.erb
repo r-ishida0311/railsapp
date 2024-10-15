@@ -1,6 +1,6 @@
 <%= turbo_frame_tag @storage do %>
   <%= render "storages/form" %>
-  <%= button_to storage_path(@storage), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "btn btn-danger" do %>
-    Delete
-  <% end %>
+<%= button_to storage_path(@storage), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "_top" }, class: "btn btn-danger" do %>
+  Delete
+<% end %>
 <% end %>
