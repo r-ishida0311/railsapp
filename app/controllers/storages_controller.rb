@@ -1,6 +1,6 @@
 class StoragesController < ApplicationController
   def index
-    @storages = Storage.all
+    @storages = Storage.page(params[:page])
     @storage = Storage.new
   end
 
@@ -9,7 +9,7 @@ class StoragesController < ApplicationController
     if @storage.save
       redirect_to storages_path, notice: 'Storage was successfully created.'
     else
-      @storages = Storage.all # Fetch all storages for the index view
+      @storages = Storage.page(params[:page])
       render :index, status: :unprocessable_entity
     end
   end

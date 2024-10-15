@@ -37,9 +37,10 @@
 
       </tr>
     <% end %>
+    
   </tbody>
 </table>
-
+<%= paginate @storages %>
 <%= render "storages/form" %>
 
 <turbo-frame id="storage_edit_modal">
