@@ -14,18 +14,21 @@ class StoragesController < ApplicationController
     end
   end
 
-
   def show
     @storage = Storage.find(params[:id])
   end
-  
+
   def edit
     @storage = Storage.find(params[:id])
   end
 
+  def destroy
+    @storage = Storage.find(params[:id])
+    @storage.destroy
+    redirect_to storages_path, notice: 'Storage was successfully destroyed.'
+  end
 
   private
-
 
   def storage_params
     params.require(:storage).permit(:storage)
