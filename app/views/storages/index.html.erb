@@ -37,6 +37,7 @@
  <%# ソートのリンク。このリンクをクリックするとage属性でソートされる %>
 
 <%= turbo_frame_tag "storages-list" do %>
+<%= turbo_frame_tag "shelves-list" do %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -75,6 +76,7 @@
          
 
       </tr>
+    <% end %>
     <% end %>
     
   </tbody>

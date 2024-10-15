@@ -1,8 +1,8 @@
-<%= turbo_frame_tag @shelf do %>
+<%= turbo_frame_tag "shelf_#{@shelf.id}" do %>
   <div class="mt-4">
     <%= render "shelves/form", shelf: @shelf, storage: @storage %>
 
-    <%= button_to storage_shelf_path(@storage, @shelf), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "_top" }, class: "btn btn-danger" do %>
+    <%= button_to storage_shelf_path(@storage, @shelf), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "shelf_#{@shelf.id}" }, class: "btn btn-danger" do %>
       Delete
     <% end %>
     <%= link_to "キャンセル", storages_path, class: "btn btn-secondary", data: { turbo_frame: "_top" } %>

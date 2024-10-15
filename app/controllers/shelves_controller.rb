@@ -37,12 +37,14 @@ class ShelvesController < ApplicationController
 
   def destroy
     @shelf = Shelf.find(params[:id])
+    @storage = @shelf.storage # Get the associated storage
     @shelf.destroy
     respond_to do |format|
       format.html { redirect_to storages_path }
-      format.turbo_stream { render turbo_stream: turbo_stream.remove("shelf#{@shelf.id}") }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("shelf_#{@shelf.id}") }
     end
   end
+  
 
   private
 
