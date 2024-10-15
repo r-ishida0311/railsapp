@@ -62,7 +62,7 @@
               <li>
               <%= turbo_frame_tag shelf do %>
                 <%= shelf.shelf %>
-                <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning', data: { bs_toggle: "modal", bs_target: "#editShelfModal" } %>
+                <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning' %>
               <% end %>
               </li>
             <% end %>
