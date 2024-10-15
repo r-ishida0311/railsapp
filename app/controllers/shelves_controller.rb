@@ -10,7 +10,11 @@ class ShelvesController < ApplicationController
     if @shelf.save
       redirect_to storages_path
     else
-      render :new
+      @search = Storage.ransack(params[:q])
+      @search.sorts = 'id' if @search.sorts.empty?
+      @storages = @search.result.page(params[:page])
+      @storage = Storage.new
+      render 'storages/index', status: :unprocessable_entity
     end
   end
 

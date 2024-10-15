@@ -13,7 +13,7 @@ class StoragesController < ApplicationController
       redirect_to storages_path
     else
       @search = Storage.ransack(params[:q])
-      @search.sorts = 'id desc' if @search.sorts.empty?
+      @search.sorts = 'id' if @search.sorts.empty?
       @storages = @search.result.page(params[:page])
       render :index, status: :unprocessable_entity
     end
