@@ -7,4 +7,15 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  <% if @storage.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@storage.errors.count, "error") %> prohibited this storage from being saved:</h2>
+
+    <ul>
+      <% @storage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <% end %>
