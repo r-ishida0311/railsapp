@@ -48,30 +48,31 @@
   </thead>
 <tbody>
   <% @storages.each do |storage| %>
-  <%= turbo_frame_tag storage do %>
-    <tr id="<%= dom_id(storage) %>">
-      
+   
+    <tr>
+     
         <td>
+        <%= turbo_frame_tag storage do %>
           <%= storage.storage %>
           <%= link_to "Edit", edit_storage_path(storage), class: 'btn btn-warning' %>
+            <% end %>
         </td>
         <td>
           <ul>
             <% storage.shelves.each do |shelf| %>
-            <%= turbo_frame_tag shelf do %>
-              <li id="<%= dom_id(shelf) %>">
-                
+              <%= turbo_frame_tag shelf do %>
+                <li>
                   <%= shelf.shelf %>
                   <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning' %>
-                <% end %>
-              </li>
+                </li>
+              <% end %>
             <% end %>
           </ul>
           <%= render "shelves/form", shelf: Shelf.new(storage: storage), storage: storage %>
         </td>
       
     </tr>
-    <% end %>
+  
   <% end %>
 </tbody>
 
