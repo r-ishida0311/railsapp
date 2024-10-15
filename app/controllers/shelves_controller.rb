@@ -14,6 +14,11 @@ class ShelvesController < ApplicationController
     end
   end
 
+  def edit
+    @storage = Storage.find(params[:storage_id])
+    @shelf = @storage.shelves.find(params[:id])
+  end
+
   private
 
   def shelf_params

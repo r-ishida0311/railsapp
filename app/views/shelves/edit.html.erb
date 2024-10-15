@@ -1,0 +1,23 @@
+<%= turbo_frame_tag @shelf do %>
+  <div class="modal fade" id="editShelfModal" tabindex="-1" aria-labelledby="editShelfModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editShelfModalLabel">棚の編集</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "shelves/form", shelf: @shelf, storage: @storage %>
+        </div>
+        <div class="modal-footer">
+          <%= button_to storage_shelf_path(@storage, @shelf), method: :patch, data: { turbo_method: :patch, turbo_frame: "_top" }, class: "btn btn-primary" do %>
+            保存
+          <% end %>
+          <%= button_to "#", data: { turbo_frame: "_top", bs_dismiss: "modal" }, class: "btn btn-secondary" do %>
+            キャンセル
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

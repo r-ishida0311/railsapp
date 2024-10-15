@@ -59,7 +59,12 @@
         <td>
           <ul>
             <% storage.shelves.each do |shelf| %>
-              <li><%= shelf.shelf %></li>
+              <li>
+              <%= turbo_frame_tag shelf do %>
+                <%= shelf.shelf %>
+                <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning', data: { bs_toggle: "modal", bs_target: "#editShelfModal" } %>
+              <% end %>
+              </li>
             <% end %>
           </ul>
           
