@@ -1,4 +1,23 @@
-<h1>貸出一覧</h1>
+<h1>予約画面</h1>
+
+<ul class="nav nav-tabs mt-4">
+  <% @categories.each_with_index do |category, index| %>
+    <li class="nav-item">
+      <a class="nav-link <%= 'active' if index == 0 %>" href="#category<%= category.id %>" data-bs-toggle="tab">
+        <%= category.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<div class="tab-content mt-3">
+  <% @categories.each_with_index do |category, index| %>
+    <div class="tab-pane fade <%= 'show active' if index == 0 %>" id="category<%= category.id %>">
+      <h3><%= category.name %></h3>
+      <!-- カテゴリーごとのコンテンツを表示 -->
+    </div>
+  <% end %>
+</div>
 
 <table>
   <thead>
@@ -29,10 +48,5 @@
   </tbody>
 </table>
 
-<h2>カテゴリー一覧</h2>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li><%= category.name %></li>
-  <% end %>
-</ul>
+
