@@ -1,11 +1,12 @@
 <%= turbo_frame_tag shelf do %>
-  <%= form_with(model: shelf, url: shelf.new_record? ? storage_shelves_path(storage) : storage_shelf_path(storage, shelf), method: shelf.new_record? ? :post : :patch) do |form| %>
+  <%= form_with(model: shelf, url: storage_shelves_path(storage), method: :post, data: { turbo_frame: "shelves-list" }) do |form| %>
     <div class="field">
       <%= form.text_field :shelf, placeholder: "棚名" %>
       <%= form.hidden_field :storage_id, value: storage.id %>
-      <%= form.submit shelf.new_record? ? "追加" : "更新", class: "btn btn-primary" %>
+      <%= form.submit "追加", class: "btn btn-primary" %>
     </div>
   <% end %>
+
 
   <% if shelf.errors.any? %>
     <div id="error_explanation">
