@@ -1,12 +1,8 @@
-<%= turbo_frame_tag shelf do %>
-  <%= form_with(model: shelf, url: storage_shelves_path(storage), method: :post, data: { turbo_frame: "shelves-list" }) do |form| %>
-    <div class="field">
-      <%= form.text_field :shelf, placeholder: "棚名" %>
-      <%= form.hidden_field :storage_id, value: storage.id %>
-      <%= form.submit "追加", class: "btn btn-primary" %>
-    </div>
+  <%= form_with(model: shelf, url: storage_shelves_path(storage), method: :post, data: { turbo_frame: "shelves-list" }, class: "d-flex align-items-center") do |form| %>
+    <%= form.text_field :shelf, placeholder: "棚名", class: "form-control me-2" %>
+    <%= form.hidden_field :storage_id, value: storage.id %>
+    <%= form.submit "追加", class: "btn btn-primary me-2" %>
   <% end %>
-
 
   <% if shelf.errors.any? %>
     <div id="error_explanation">
@@ -18,8 +14,3 @@
       </ul>
     </div>
   <% end %>
-
-  <% unless shelf.new_record? %>
-    <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning' %>
-  <% end %>
-<% end %>
