@@ -13,20 +13,36 @@
 <div class="tab-content mt-3">
   <% @categories.each_with_index do |category, index| %>
     <div class="tab-pane fade <%= 'show active' if index == 0 %>" id="category<%= category.id %>">
-      <h3><%= category.name %></h3>
+      
       <table class="table table-striped">
         <thead>
           <tr>
             <th>機器名</th>
+            <th>品名</th>
+            <th>所属</th>
+            <th>レンタル料金</th>
+            <th>前払い料金</th>
+            <th>シリアル</th>
+            <th>ステータス</th>
+            <th>備考</th>
           </tr>
         </thead>
         <tbody>
           <% category.equipment.each do |equipment| %>
-            <tr>
-              <td><%= equipment.equipment %></td>
-            </tr>
-          <% end %>
-        </tbody>
+            <% equipment.items.each do |item| %>
+              <tr>
+                <td><%= item.equipment.equipment %></td>
+                <td><%= item.item %></td>
+                <td><%= item.affiliation.affiliation %></td>
+                <td><%= item.rental_fee %></td>
+                <td><%= item.pre_rental_fee %></td>
+                <td><%= item.serial %></td>
+                <td><%= item.status %></td>
+                <td><%= item.memo %></td>
+              </tr>
+            <% end %>
+            <% end %>
+          </tbody>
       </table>
     </div>
   <% end %>
