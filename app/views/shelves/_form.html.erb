@@ -1,7 +1,7 @@
   <%= form_with(model: shelf, url: storage_shelves_path(storage), method: :post, data: { turbo_frame: "shelves-list" }, class: "d-flex align-items-center") do |form| %>
     <%= form.text_field :shelf, placeholder: "棚名", class: "form-control me-2" %>
     <%= form.hidden_field :storage_id, value: storage.id %>
-    <%= form.submit "追加", class: "btn btn-primary me-2" %>
+    <%= form.submit shelf.new_record? ? "追加" : "更新", class: "btn btn-primary me-2" %>
   <% end %>
 
 

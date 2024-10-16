@@ -1,6 +1,6 @@
 <%= form_with(model: @storage, url: @storage.new_record? ? storages_path : storage_path(@storage), method: @storage.new_record? ? :post : :patch, class: "d-flex align-items-center") do |form| %>
   <%= form.text_field :storage, placeholder: "倉庫名", class: "me-2 form-control" %>
-  <%= form.submit "追加", class: "btn btn-primary me-2" %>
+  <%= form.submit @storage.new_record? ? "追加" : "更新", class: "btn btn-primary me-2" %> 
   <%= form.hidden_field :id %>
 
 
