@@ -1,10 +1,16 @@
 <%= turbo_frame_tag "shelf_#{@shelf.id}" do %>
   <div class="mt-4">
-    <%= render "shelves/form", shelf: @shelf, storage: @storage %>
-
-    <%= button_to storage_shelf_path(@storage, @shelf), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "shelf_#{@shelf.id}" }, class: "btn btn-danger" do %>
-      Delete
+    <%= form_with(model: @shelf, url: storage_shelf_path(@storage, @shelf), method: :patch) do |form| %>
+      <div class="field">
+        <%= form.text_field :shelf, placeholder: "棚名" %>
+        <%= form.submit "更新", class: "btn btn-primary" %>
+            <%= button_to storage_shelf_path(@storage, @shelf), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "shelf_#{@shelf.id}" }, class: "btn btn-danger" do %>
+      削除
     <% end %>
-    <%= link_to "キャンセル", storages_path, class: "btn btn-secondary", data: { turbo_frame: "_top" } %>
-  </div> 
+        <%= link_to "キャンセル", storages_path, class: "btn btn-secondary", data: { turbo_frame: "_top" } %>
+      </div>
+    <% end %>
+
+
+  </div>
 <% end %>

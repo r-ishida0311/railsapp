@@ -1,22 +1,24 @@
-<%= form_with(model: shelf, url: shelf.new_record? ? storage_shelves_path(storage) : storage_shelf_path(storage, shelf), method: shelf.new_record? ? :post : :patch) do |form| %>
-  <div class="field">
-    <%= form.label :shelf %>
-    <%= form.text_field :shelf %>
-  </div>
-  <%= form.hidden_field :storage_id, value: storage.id %>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= turbo_frame_tag shelf do %>
+  <%= form_with(model: shelf, url: shelf.new_record? ? storage_shelves_path(storage) : storage_shelf_path(storage, shelf), method: shelf.new_record? ? :post : :patch) do |form| %>
+    <div class="field">
+      <%= form.text_field :shelf, placeholder: "棚名" %>
+      <%= form.hidden_field :storage_id, value: storage.id %>
+      <%= form.submit shelf.new_record? ? "追加" : "更新", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
   <% if shelf.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(shelf.errors.count, "error") %> prohibited this shelf from being saved:</h2>
+    <div id="error_explanation">
+      <h2><%= pluralize(shelf.errors.count, "error") %> prohibited this shelf from being saved:</h2>
+      <ul>
+        <% shelf.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <ul>
-      <% shelf.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% unless shelf.new_record? %>
+    <%= link_to "Edit", edit_storage_shelf_path(storage, shelf), class: 'btn btn-warning' %>
+  <% end %>
 <% end %>
