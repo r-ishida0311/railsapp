@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>カテゴリー</th>
       <th>機器</th>
       <th>品名</th>
       <th>所属</th>
@@ -15,61 +14,25 @@
     </tr>
   </thead>
   <tbody>
-    <% @categories.each do |category| %>
+    <% @items.each do |item| %>
       <tr>
-        <td><%= category.name %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= item.equipment.equipment %></td>
+        <td><%= item.item %></td>
+        <td><%= item.affiliation.affiliation %></td>
+        <td><%= item.rental_fee %></td>
+        <td><%= item.pre_rental_fee %></td>
+        <td><%= item.serial %></td>
+        <td><%= item.status %></td>
+        <td><%= item.memo %></td>
       </tr>
-      <% category.equipment.each do |equipment| %>
-        <tr>
-          <td></td>
-          <td><%= equipment.equipment %></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <% equipment.items.each do |item| %>
-          <tr>
-            <td></td>
-            <td></td>
-            <td><%= item.item %></td>
-            <td><%= item.affiliation.affiliation %></td>
-            <td><%= item.rental_fee %></td>
-            <td><%= item.pre_rental_fee %></td>
-            <td><%= item.serial %></td>
-            <td><%= item.status %></td>
-            <td><%= item.memo %></td>
-          </tr>
-        <% end %>
-      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <h2>カテゴリー一覧</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>カテゴリー名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories_for_list.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
