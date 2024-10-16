@@ -11,3 +11,6 @@ Storage.destroy_all
 
 Storage.create(storage: 'Storage 1')
 Storage.create(storage: 'Storage 2')
+
+Affiliation.create(affiliation: "MBS")
+Affiliation.create(affiliation: "BMP")
