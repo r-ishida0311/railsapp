@@ -45,10 +45,7 @@ class StoragesController < ApplicationController
 def destroy
   @storage = Storage.find(params[:id])
   @storage.destroy
-  respond_to do |format|
-    format.html { redirect_to storages_path, notice: 'Storage was successfully destroyed.' }
-    format.turbo_stream { render turbo_stream: turbo_stream.remove("storage_#{@storage.id}") }
-  end
+  redirect_to storages_path
 end
 
   private

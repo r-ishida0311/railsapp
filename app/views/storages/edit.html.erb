@@ -1,7 +1,7 @@
 <%= turbo_frame_tag @storage do %>
   <div class="mt-4 d-flex align-items-center">
     <%= render "storages/form" %>
-    <%= button_to storage_path(@storage), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "_top" }, class: "btn btn-danger me-2" do %>
+    <%= button_to storage_path(@storage), method: :delete, data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？', turbo_frame: "storages-list" }, class: "btn btn-danger me-2" do %>
       削除
     <% end %>
     <%= link_to "キャンセル", storages_path, class: "btn btn-secondary", data: { turbo_frame: "_top" } %>
