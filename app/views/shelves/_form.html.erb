@@ -4,13 +4,6 @@
     <%= form.submit "追加", class: "btn btn-primary me-2" %>
   <% end %>
 
-  <% if shelf.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(shelf.errors.count, "error") %> prohibited this shelf from being saved:</h2>
-      <ul>
-        <% shelf.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+
+  
