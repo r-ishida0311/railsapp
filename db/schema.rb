@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_14_123324) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_16_105458) do
   create_table "affiliations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "affiliation"
     t.datetime "created_at", null: false
@@ -35,8 +35,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_123324) do
     t.string "item"
     t.bigint "category_id", null: false
     t.bigint "equipment_id", null: false
-    t.bigint "storage_id", null: false
-    t.bigint "shelf_id", null: false
+    t.bigint "storage_id"
+    t.bigint "shelf_id"
     t.bigint "affiliation_id", null: false
     t.integer "rental_fee"
     t.integer "pre_rental_fee"
@@ -94,5 +94,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_123324) do
   add_foreign_key "items", "storages"
   add_foreign_key "reservations", "items"
   add_foreign_key "reservations", "users"
-  add_foreign_key "shelves", "storages", on_delete: :cascade
+  add_foreign_key "shelves", "storages"
 end

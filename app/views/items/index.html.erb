@@ -1,1 +1,30 @@
-yoyaku
+<h1>貸出一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>機器</th>
+      <th>品名</th>
+      <th>所属</th>
+      <th>レンタル料金</th>
+      <th>前払い料金</th>
+      <th>シリアル</th>
+      <th>ステータス</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.equipment.equipment %></td>
+        <td><%= item.item %></td>
+        <td><%= item.affiliation.affiliation %></td>
+        <td><%= item.rental_fee %></td>
+        <td><%= item.pre_rental_fee %></td>
+        <td><%= item.serial %></td>
+        <td><%= item.status %></td>
+        <td><%= item.memo %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
