@@ -19,12 +19,9 @@
           <tr>
             <th>機器名</th>
             <th>品名</th>
-            <th>所属</th>
-            <th>レンタル料金</th>
-            <th>前払い料金</th>
-            <th>シリアル</th>
-            <th>ステータス</th>
-            <th>備考</th>
+            <% (Date.today..Date.today + 30).each do |date| %>
+        <th><%= date.strftime("%-m/%-d") %></th>
+      <% end %>
           </tr>
         </thead>
         <tbody>
@@ -33,12 +30,9 @@
               <tr>
                 <td><%= item.equipment.equipment %></td>
                 <td><%= item.item %></td>
-                <td><%= item.affiliation.affiliation %></td>
-                <td><%= item.rental_fee %></td>
-                <td><%= item.pre_rental_fee %></td>
-                <td><%= item.serial %></td>
-                <td><%= item.status %></td>
-                <td><%= item.memo %></td>
+             <% (Date.today..Date.today + 30).each do |date| %>
+            <td></td>
+          <% end %>
               </tr>
             <% end %>
             <% end %>

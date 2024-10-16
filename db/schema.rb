@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_16_132133) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_16_144746) do
   create_table "affiliations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "affiliation"
     t.datetime "created_at", null: false
@@ -36,7 +36,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_132133) do
     t.bigint "equipment_id", null: false
     t.bigint "storage_id"
     t.bigint "shelf_id"
-    t.bigint "affiliation_id", null: false
     t.integer "rental_fee"
     t.integer "pre_rental_fee"
     t.string "serial"
@@ -44,7 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_132133) do
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["affiliation_id"], name: "index_items_on_affiliation_id"
     t.index ["equipment_id"], name: "index_items_on_equipment_id"
     t.index ["shelf_id"], name: "index_items_on_shelf_id"
     t.index ["storage_id"], name: "index_items_on_storage_id"
@@ -85,7 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_132133) do
   end
 
   add_foreign_key "equipment", "categories"
-  add_foreign_key "items", "affiliations"
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "shelves"
   add_foreign_key "items", "storages"
