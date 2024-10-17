@@ -47,3 +47,10 @@ body {
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
+
+.fixed01 {
+  position: sticky;
+  left: 0;
+  background-color: #fff; /* Optional: Set a background color for better visibility */
+  z-index: 1; /* Optional: Ensure the fixed columns are on top */
+}
