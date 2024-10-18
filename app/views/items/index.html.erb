@@ -42,3 +42,7 @@
     </div>
   <% end %>
 </div>
+
+<%= turbo_frame_tag 'reservation' do %>
+<%= link_to "モーダル", new_item_path, class: "btn btn-sm btn-outline-primary me-2" %>
+<% end %>
