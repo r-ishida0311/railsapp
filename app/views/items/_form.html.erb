@@ -1,6 +1,6 @@
 
   <%= form_with(model: @reservation, url: reservations_path, method: :post) do |form| %>
-    <%= form.hidden_field :item_id %>
+    <%= form.hidden_field :item_no_id %>
     <%= form.label :user_id, "ユーザーID" %>
     <%= form.text_field :user_id %>
     <%= form.label :pgm, "プログラム" %>

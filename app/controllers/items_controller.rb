@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @reservation = Reservation.new(item_id: params[:item_id]) # Get item_id from params
+    @reservation = Reservation.new(item_no_id: params[:item_no_id]) # Get item_id from params
     # ... other logic ...
   end
 end
