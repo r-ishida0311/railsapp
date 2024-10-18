@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'reservation' do %>
+
   <%= form_with(model: @reservation, url: reservations_path, method: :post) do |form| %>
     <%= form.hidden_field :item_id %>
     <%= form.label :user_id, "ユーザーID" %>
@@ -13,4 +13,4 @@
     <%= form.date_field :end_date %>
     <%= form.submit "予約する" %>
   <% end %>
-<% end %>
+
