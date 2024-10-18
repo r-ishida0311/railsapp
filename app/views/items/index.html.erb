@@ -31,7 +31,9 @@
                   <td><%= item.equipment.equipment %></td>
                   <td><%= item.item %></td>
                   <% (Date.today..Date.today + 30).each do |date| %>
-                    <td>◇</td>
+                    <td><%= turbo_frame_tag 'reservation' do %>
+                        <%= link_to "◇", new_item_path, class: "btn btn-sm btn-outline-primary me-2" , data: { turbo_frame: "modal" } %>
+                        <% end %></td>
                   <% end %>
                 </tr>
               <% end %>
@@ -43,6 +45,4 @@
   <% end %>
 </div>
 
-<%= turbo_frame_tag 'reservation' do %>
-<%= link_to "モーダル", new_item_path, class: "btn btn-sm btn-outline-primary me-2" %>
-<% end %>
+
