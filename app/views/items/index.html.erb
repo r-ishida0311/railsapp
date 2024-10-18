@@ -17,8 +17,8 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th class="fixed01">機器名</th>
-              <th class="fixed01">品名</th>
+              <th>機器名</th>
+              <th>品名</th>
               <% (Date.today..Date.today + 30).each do |date| %>
                 <th><%= date.strftime("%-m/%-d") %></th>
               <% end %>
@@ -28,8 +28,8 @@
             <% category.equipment.each do |equipment| %>
               <% equipment.items.each do |item| %>
                 <tr>
-                  <th class="fixed01"><%= item.equipment.equipment %></td>
-                  <th class="fixed01"><%= item.item %></td>
+                  <td><%= item.equipment.equipment %></td>
+                  <td><%= item.item %></td>
                   <% (Date.today..Date.today + 30).each do |date| %>
                     <td>◇</td>
                   <% end %>
