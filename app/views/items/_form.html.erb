@@ -1,18 +1,15 @@
-
-  <%= form_with(model: @reservation, url: reservations_path, method: :post) do |form| %>
-    <%= form.hidden_field :item_no_id %>
-    <%= form.label :user_id, "ユーザーID" %>
-    <%= form.text_field :user_id %>
-    <%= form.label :pgm, "プログラム" %>
-    <%= form.text_field :pgm %>
-    <%= form.label :location, "場所" %>
-    <%= form.text_field :location %>
-    <%= form.label :start_date, "開始日" %>
-    <%= form.date_field :start_date %>
-    <%= form.label :end_date, "終了日" %>
-    <%= form.date_field :end_date %>
-    <%= form.submit "予約する" %>
-
-
-  <% end %>
-
+<%= form_with(model: @reservation, url: reservations_path, method: :post) do |form| %>
+  <%= form.hidden_field :item_no_id %>
+  <%= form.hidden_field :item_id %>
+  <%= form.label :user_id, "ユーザーID" %>
+  <%= form.text_field :user_id %>
+  <%= form.label :pgm, "プログラム" %>
+  <%= form.text_field :pgm %>
+  <%= form.label :location, "場所" %>
+  <%= form.text_field :location %>
+  <%= form.label :start_date, "開始日" %>
+  <%= form.date_field :start_date, value: @reservation.start_date %>
+  <%= form.label :end_date, "終了日" %>
+  <%= form.date_field :end_date %>
+  <%= form.submit "予約する" %>
+<% end %>
