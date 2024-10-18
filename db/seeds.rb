@@ -20,18 +20,9 @@
 #   end
 
 
-10.times do
-  Item.create!(
-    item: "item_#{rand(1000)}",
-    category_id: Category.all.sample.id,
-    equipment_id: Equipment.all.sample.id,
-    storage_id: Storage.all.sample&.id, # 空の値を許可
-    shelf_id: Shelf.all.sample&.id, # 空の値を許可
-    affiliation_id: Affiliation.all.sample.id,
-    rental_fee: rand(100..1000),
-    pre_rental_fee: rand(50..500),
-    serial: "serial_#{rand(1000)}",
-    status: rand(0..2),
-    memo: "memo_#{rand(1000)}"
+20.times do
+  ItemNo.create!(
+    item_no: rand(10), # 0 から 999 までのランダムな整数値を生成
+    item_id: Item.all.sample.id,
   )
 end

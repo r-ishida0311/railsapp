@@ -19,6 +19,7 @@
             <tr>
               <th>機器名</th>
               <th>品名</th>
+              <th>No.</th>
               <% (Date.today..Date.today + 30).each do |date| %>
                 <th><%= date.strftime("%-m/%-d") %></th>
               <% end %>
@@ -27,9 +28,11 @@
           <tbody>
             <% category.equipment.each do |equipment| %>
               <% equipment.items.each do |item| %>
+               <% item.item_nos.each do |item_no| %>
                 <tr>
                   <td><%= item.equipment.equipment %></td>
                   <td><%= item.item %></td>
+                  <td><%= item_no.item_no %></td>
                   <% (Date.today..Date.today + 30).each do |date| %>
                     <td><%= turbo_frame_tag 'reservation' do %>
                         <%= link_to "◇", new_item_path, class: "btn btn-sm btn-outline-primary me-2" , data: { turbo_frame: "modal" } %>
@@ -37,6 +40,7 @@
                   <% end %>
                 </tr>
               <% end %>
+            <% end %>
             <% end %>
           </tbody>
         </table>
