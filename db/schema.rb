@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_16_144746) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_18_140239) do
   create_table "affiliations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "affiliation"
     t.datetime "created_at", null: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_144746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_equipment_on_category_id"
+  end
+
+  create_table "item_nos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "item_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -50,14 +57,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_144746) do
 
   create_table "reservations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
     t.string "pgm"
     t.string "location"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_reservations_on_item_id"
+    t.bigint "item_no_id"
+    t.index ["item_no_id"], name: "index_reservations_on_item_no_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -86,7 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_16_144746) do
   add_foreign_key "items", "equipment"
   add_foreign_key "items", "shelves"
   add_foreign_key "items", "storages"
-  add_foreign_key "reservations", "items"
+  add_foreign_key "reservations", "item_nos"
   add_foreign_key "reservations", "users"
   add_foreign_key "shelves", "storages"
 end
